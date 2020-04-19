@@ -22,7 +22,7 @@ class ApiController extends Controller
             'lat' => $request->get('lat'),
         ];
 
-        $model = new Records($data);
+        $model = new Record($data);
         if ($model->save()) {
             return $model;
         }
