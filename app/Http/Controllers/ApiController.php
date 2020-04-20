@@ -17,9 +17,13 @@ class ApiController extends Controller
     public function put(Request $request)
     {
         $data = [
-            'uid' => $request->get('uid'),
-            'long' => $request->get('long'),
-            'lat' => $request->get('lat'),
+            'uid'           => $request->get('uid'),
+            'long'          => $request->get('long'),
+            'lat'           => $request->get('lat'),
+            'symptoms'      => $request->get('symptoms'),
+            'tested'        => $request->get('tested'),
+            'test_positive' => $request->get('test_positive'),
+            'data'          => $request->get('data')
         ];
 
         $model = new Record($data);

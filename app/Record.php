@@ -6,7 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Record extends Model
 {
-    public $fillable = [
-        'cid', 'lat', 'long'
+    protected $fillable = [
+        'cid', 'lat', 'long',
+        'symptoms', 'tested', 'tested_positive',
+        'data'
+    ];
+
+    protected $cast = [
+        'data' => 'json'
     ];
 }
