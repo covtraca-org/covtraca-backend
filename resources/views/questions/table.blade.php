@@ -2,8 +2,7 @@
     <table class="table" id="questions-table">
         <thead>
             <tr>
-                <th>Title</th>
-        <th>Value</th>
+                <th>Title</th>        
         <th>Type</th>
         <th>Options</th>
                 <th colspan="3">Action</th>
@@ -12,8 +11,7 @@
         <tbody>
         @foreach($questions as $question)
             <tr>
-                <td>{{ $question->title }}</td>
-            <td>{{ $question->value }}</td>
+                <td>{{ $question->title }}</td>            
             <td>{{ $question->type }}</td>
             <td>{{ $question->options }}</td>
                 <td>
