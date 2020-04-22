@@ -7,7 +7,7 @@
                 .form-inline.form-options
                     .form-group
                         label(for="'title-' + index") Title option
-                        input.form-control(:id="'title-' + index", type='text', v-model="field.title")
+                        input.form-control(:id="'title-' + index", type='text', v-model="field.label")
                     .form-group
                         label(for="'value-' + index") Value question
                         input.form-control(:id="'title-' + index", type='text', v-model="field.value")
@@ -25,7 +25,7 @@ export default {
     data() {
         return {
             fields: [
-                { title: "", value: "" }
+                { label: "", value: "" }
             ],
             typeField: ""
         }
@@ -56,7 +56,7 @@ export default {
         add() {
             let vm = this
             vm.fields.push({
-                title: "", value: ""
+                label: "", value: ""
             })
         },
         deleteOption(option) {

@@ -4,6 +4,7 @@
             <tr>
                 <th>Title</th>        
         <th>Type</th>
+        <th>State Name</th>
         <th>Options</th>
                 <th colspan="3">Action</th>
             </tr>
@@ -13,6 +14,7 @@
             <tr>
                 <td>{{ $question->title }}</td>            
             <td>{{ $question->type }}</td>
+            <td>{{ $question->state_name }}</td>
             <td>{{ $question->options }}</td>
                 <td>
                     {!! Form::open(['route' => ['questions.destroy', $question->id], 'method' => 'delete']) !!}
@@ -28,3 +30,4 @@
         </tbody>
     </table>
 </div>
+

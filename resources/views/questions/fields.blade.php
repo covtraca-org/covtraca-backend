@@ -9,6 +9,10 @@
     {!! Form::label('type', 'Type:') !!}
     {!! Form::select('type', ['' => 'Choose a option', 'select' => 'Select', 'text' => 'Text', 'number' => 'Number', 'checkbox' => 'Checkbox', 'radio' => 'Radio', 'textarea' => 'Textarea', 'email' => 'Email', 'tel' => 'Tel', 'date' => 'Date', 'file' => 'File', 'toggle' => 'Toggle'], null, ['class' => 'form-control', 'id'=> 'type-select']) !!}
 </div>
+<div class="form-group col-sm-6">
+    {!! Form::label('state_name', 'State name:') !!}
+    {!! Form::text('state_name', null, ['class' => 'form-control']) !!}
+</div>
 
 <!-- Value Field -->
 <div class="form-group col-sm-6">    

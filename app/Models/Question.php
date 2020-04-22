@@ -30,6 +30,7 @@ class Question extends Model
     public $fillable = [
         'title',
         'value',
+        'state_name',
         'type',
         'options'
     ];
@@ -42,6 +43,7 @@ class Question extends Model
     protected $casts = [
         'id' => 'integer',
         'title' => 'string',
+        'state_name' => 'string',        
         'value' => 'string',
         'type' => 'string'
     ];

@@ -17,6 +17,7 @@ class CreateQuestionsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('value')->nullable();
+            $table->string('state_name')->nullable();
             $table->enum('type', ['text', 'select','number','checkbox','radio','textarea','email','tel','date','file','toggle']);
             $table->json('options')->nullable();
             $table->timestamps();
