@@ -17,7 +17,7 @@ class QuestionController extends AppBaseController
 
     public function __construct(QuestionRepository $questionRepo)
     {        
-        $this->middleware('auth');
+        $this->middleware('role:Administrator');
         $this->questionRepository = $questionRepo;
     }
 

@@ -17,12 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::put('/api', 'ApiController@put');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('questions', 'QuestionController');
 
+Route::resource('questions', 'QuestionController');
 Route::resource('records', 'RecordController');

@@ -5,7 +5,7 @@
     <title>CovTraca Generator</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
-    <!-- Bootstrap 3.3.7 -->
+    <!-- Bootstrap 3.3.7 -->    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css">
     <!-- Font Awesome -->
@@ -23,11 +23,13 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">    
 
     @yield('css')
 </head>
 
 <body class="skin-blue sidebar-mini">
+<div id="app">
 @if (!Auth::guest())
     <div class="wrapper">
         <!-- Main Header -->
@@ -148,7 +150,10 @@
         </div>
     </div>
     @endif
-
+    </div>
+    <script type="text/javascript" src="{{ mix('/js/manifest.js') }}"></script>
+    <script type="text/javascript" src="{{ mix('/js/vendor.js') }}"></script>
+    <script type="text/javascript" src="{{ mix('/js/app.js') }}"></script>
     <!-- jQuery 3.1.1 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>

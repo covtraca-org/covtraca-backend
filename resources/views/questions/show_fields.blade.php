@@ -4,12 +4,6 @@
     <p>{{ $question->title }}</p>
 </div>
 
-<!-- Value Field -->
-<div class="form-group">
-    {!! Form::label('value', 'Value:') !!}
-    <p>{{ $question->value }}</p>
-</div>
-
 <!-- Type Field -->
 <div class="form-group">
     {!! Form::label('type', 'Type:') !!}

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Permission\Traits\HasRoles;
 
 /**
  * Class Question
@@ -17,7 +18,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Question extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasRoles;    
 
     public $table = 'questions';
     

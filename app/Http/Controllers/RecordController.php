@@ -17,7 +17,7 @@ class RecordController extends AppBaseController
 
     public function __construct(RecordRepository $recordRepo)
     {
-        $this->middleware('auth');
+        $this->middleware('role:Administrator');
         $this->recordRepository = $recordRepo;
     }
 
