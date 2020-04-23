@@ -21,4 +21,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::resource('questions', 'QuestionAPIController');
 
-Route::resource('records', 'RecordAPIController');
+
+
+Route::resource('devices', 'DeviceAPIController');
+
+
+
+Route::resource('reports', 'ReportAPIController');

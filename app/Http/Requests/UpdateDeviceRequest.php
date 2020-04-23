@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Record;
+use App\Models\Device;
 
-class CreateRecordRequest extends FormRequest
+class UpdateDeviceRequest extends FormRequest
 {
 
     /**
@@ -25,6 +25,8 @@ class CreateRecordRequest extends FormRequest
      */
     public function rules()
     {
-        return Record::$rules;
+        $rules = Device::$rules;
+        
+        return $rules;
     }
 }

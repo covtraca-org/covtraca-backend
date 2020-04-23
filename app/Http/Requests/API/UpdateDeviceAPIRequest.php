@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\API;
 
-use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Record;
+use App\Models\Device;
+use InfyOm\Generator\Request\APIRequest;
 
-class UpdateRecordRequest extends FormRequest
+class UpdateDeviceAPIRequest extends APIRequest
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -25,7 +24,7 @@ class UpdateRecordRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = Record::$rules;
+        $rules = Device::$rules;
         
         return $rules;
     }

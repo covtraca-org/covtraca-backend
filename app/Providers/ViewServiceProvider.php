@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Providers;
+use App\Models\Device;
+use App\Models\Question;
 
 use App\User;
 
@@ -25,10 +27,14 @@ class ViewServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {        
-        View::composer(['records.fields'], function ($view) {
-            $userItems = User::orderBy('created_at', 'desc')->pluck('name','id')->toArray();
-            $view->with('userItems', $userItems);
-        });        
+    {
+        View::composer(['reports.fields'], function ($view) {
+            $deviceItems = Device::pluck('uid','id')->toArray();
+            $view->with('deviceItems', $deviceItems);
+        });
+        View::composer(['reports.fields'], function ($view) {
+            $questionItems = Question::pluck('title','id')->toArray();
+            $view->with('questionItems', $questionItems);
+        });
     }
 }

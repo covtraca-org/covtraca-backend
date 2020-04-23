@@ -23,4 +23,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::resource('questions', 'QuestionController');
-Route::resource('records', 'RecordController');
+
+
+Route::resource('devices', 'DeviceController');
+
+
+
+Route::resource('reports', 'ReportController');

@@ -2,27 +2,27 @@
 
 namespace App\Repositories;
 
-use App\Models\Record;
+use App\Models\Report;
 use App\Repositories\BaseRepository;
 
 /**
- * Class RecordRepository
+ * Class ReportRepository
  * @package App\Repositories
- * @version April 21, 2020, 1:11 am UTC
+ * @version April 23, 2020, 12:26 am UTC
 */
 
-class RecordRepository extends BaseRepository
+class ReportRepository extends BaseRepository
 {
     /**
      * @var array
      */
     protected $fieldSearchable = [
-        'uid',
-        'long',
+        'answer',
+        'question_id',
+        'device_id',
         'lat',
-        'symptoms',
-        'tested',
-        'test_positive'
+        'long',
+        'timestamp'
     ];
 
     /**
@@ -40,6 +40,6 @@ class RecordRepository extends BaseRepository
      **/
     public function model()
     {
-        return Record::class;
+        return Report::class;
     }
 }

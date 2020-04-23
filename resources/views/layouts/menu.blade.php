@@ -2,7 +2,13 @@
     <a href="{{ route('questions.index') }}"><i class="fa fa-edit"></i><span>Questions</span></a>
 </li>
 
-<li class="{{ Request::is('records*') ? 'active' : '' }}">
-    <a href="{{ route('records.index') }}"><i class="fa fa-edit"></i><span>Records</span></a>
+
+<li class="{{ Request::is('devices*') ? 'active' : '' }}">
+    <a href="{{ route('devices.index') }}"><i class="fa fa-edit"></i><span>Devices</span></a>
+</li>
+
+
+<li class="{{ Request::is('reports*') ? 'active' : '' }}">
+    <a href="{{ route('reports.index') }}"><i class="fa fa-edit"></i><span>Reports</span></a>
 </li>
 

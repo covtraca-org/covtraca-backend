@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Requests\API;
+namespace App\Http\Requests;
 
-use App\Models\Record;
-use InfyOm\Generator\Request\APIRequest;
+use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Report;
 
-class CreateRecordAPIRequest extends APIRequest
+class CreateReportRequest extends FormRequest
 {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -24,6 +25,6 @@ class CreateRecordAPIRequest extends APIRequest
      */
     public function rules()
     {
-        return Record::$rules;
+        return Report::$rules;
     }
 }
