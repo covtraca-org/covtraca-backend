@@ -2,10 +2,10 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateQuestionsTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -18,11 +18,13 @@ class CreateQuestionsTable extends Migration
             $table->string('title');
             $table->string('value')->nullable();
             $table->string('state_name')->nullable();
+            $table->string('i18n')->nullable();
             $table->enum('type', ['text', 'select','number','checkbox','radio','textarea','email','tel','date','file','toggle']);
             $table->json('options')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
+
     }
 
     /**
@@ -32,6 +34,6 @@ class CreateQuestionsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('questions');
+        Schema::dropIfExists('questions');
     }
 }
