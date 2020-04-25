@@ -2,10 +2,10 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateQuestionsTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -23,6 +23,7 @@ class CreateQuestionsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
     }
 
     /**
@@ -32,6 +33,6 @@ class CreateQuestionsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('questions');
+        Schema::dropIfExists('questions');
     }
 }
