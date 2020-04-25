@@ -14,6 +14,11 @@
     {!! Form::text('state_name', null, ['class' => 'form-control']) !!}
 </div>
 
+<div class="form-group col-sm-6">
+    {!! Form::label('i18n', 'i18n:') !!}
+    {!! Form::text('i18n', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Value Field -->
 <div class="form-group col-sm-6">    
     {!! Form::text('value', null, ['hidden' => 'true', 'id'=> 'value']) !!}

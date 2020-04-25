@@ -15,9 +15,9 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->string('value')->nullable();
+            $table->string('title');            
             $table->string('state_name')->nullable();
+            $table->string('i18n')->nullable();
             $table->enum('type', ['text', 'select','number','checkbox','radio','textarea','email','tel','date','file','toggle']);
             $table->json('options')->nullable();
             $table->timestamps();

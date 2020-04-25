@@ -19,12 +19,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::resource('questions', 'QuestionAPIController');
+Route::resource('questions', 'QuestionAPIController')->only([
+    'index', 'show'
+]);
 
 
 
-Route::resource('devices', 'DeviceAPIController');
+Route::resource('devices', 'DeviceAPIController')->only([
+    'index', 'show', 'store'
+]);
 
 
 
-Route::resource('reports', 'ReportAPIController');
+Route::resource('reports', 'ReportAPIController')->only([
+    'index', 'show', 'store'
+]);

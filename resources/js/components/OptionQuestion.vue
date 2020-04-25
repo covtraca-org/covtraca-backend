@@ -9,9 +9,12 @@
                         label(for="'title-' + index") Title option
                         input.form-control(:id="'title-' + index", type='text', v-model="field.label")
                     .form-group
+                        label(for="'i18n-' + index") i18n
+                        input.form-control(:id="'i18n-' + index", type='text', v-model="field.i18n")
+                    .form-group
                         label(for="'value-' + index") Value question
-                        input.form-control(:id="'title-' + index", type='text', v-model="field.value")
-                    button.btn.btn-danger(v-if="index > 0", type='button', @click="deleteOption(field)") Delete option
+                        input.form-control(:id="'value-' + index", type='text', v-model="field.value")
+                    button.btn.btn-danger(v-if="index > 0", type='button', @click="deleteOption(field)") Delete
         input(:name="nameField + '-field'", :type="nameField", v-model="formatJson", hidden)
 </template>
 <script>
@@ -25,7 +28,7 @@ export default {
     data() {
         return {
             fields: [
-                { label: "", value: "" }
+                { label: "", value: "", i18n: "" }
             ],
             typeField: ""
         }
@@ -56,7 +59,7 @@ export default {
         add() {
             let vm = this
             vm.fields.push({
-                label: "", value: ""
+                label: "", value: "", i18n: ""
             })
         },
         deleteOption(option) {

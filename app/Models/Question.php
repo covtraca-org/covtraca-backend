@@ -12,7 +12,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @version April 21, 2020, 12:32 am UTC
  *
  * @property string title
- * @property string value
+ * @property string i18n
  * @property string type
  * @property json options
  */
@@ -28,9 +28,9 @@ class Question extends Model
 
 
     public $fillable = [
-        'title',
-        'value',
+        'title',        
         'state_name',
+        'i18n',
         'type',
         'options'
     ];
@@ -43,8 +43,8 @@ class Question extends Model
     protected $casts = [
         'id' => 'integer',
         'title' => 'string',
-        'state_name' => 'string',        
-        'value' => 'string',
+        'state_name' => 'string',
+        'i18n' => 'string',        
         'type' => 'string'
     ];
 
