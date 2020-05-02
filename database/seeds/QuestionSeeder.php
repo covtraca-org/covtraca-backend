@@ -14,32 +14,6 @@ class QuestionSeeder extends Seeder
         DB::table('questions')->insert([
             [
                 'id' => 1,
-                'title' => 'Have you had a test for COVID-19?',                
-                'state_name' => 'isTested',
-                'i18n' => 'isTested',
-                'type' => 'select',
-                'options' => '[
-                    {"i18n": "yes", "label": "Yes", "value": true},
-                    {"i18n": "no", "label": "No", "value": false}
-                ]',                
-                'created_at' => date("Y-m-d H:i:s"),
-                'updated_at' => date("Y-m-d H:i:s"),
-            ],
-            [
-                'id' => 2,
-                'title' => 'Did you test positive for COVID-19?',
-                'state_name' => 'isPositive',
-                'i18n' => 'isPositive',
-                'type' => 'select',
-                'options' => '[
-                    {"i18n": "yes", "label": "Yes", "value": true},
-                    {"i18n": "no", "label": "No", "value": false}
-                ]',
-                'created_at' => date("Y-m-d H:i:s"),
-                'updated_at' => date("Y-m-d H:i:s"),
-            ],
-            [
-                'id' => 3,
                 'title' => 'How do you feel physically?',
                 'state_name' => 'currentHealth',
                 'i18n' => 'currentHealth',
@@ -52,7 +26,7 @@ class QuestionSeeder extends Seeder
                 'updated_at' => date("Y-m-d H:i:s"),
             ],
             [
-                'id' => 4,
+                'id' => 2,
                 'title' => 'Describe symptoms you are experiencing right now',
                 'state_name' => 'symptoms',
                 'i18n' => 'symptomsQuestion',
@@ -66,6 +40,32 @@ class QuestionSeeder extends Seeder
                     {"id": 6, "i18n": "lostSmellOrTaste", "title": "Have you lost your sense of smell or taste?"},
                     {"id": 7, "i18n": "hasFatigue", "title": "Do you feel tired or exhausted?"},
                     {"id": 8, "i18n": "runnyNose", "title": "Do you have a runny nose?"}
+                ]',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
+                ],
+            [
+                'id' => 3,
+                'title' => 'Have you had a test for COVID-19?',                
+                'state_name' => 'isTested',
+                'i18n' => 'isTested',
+                'type' => 'select',
+                'options' => '[
+                    {"i18n": "yes", "label": "Yes", "value": true},
+                    {"i18n": "no", "label": "No", "value": false}
+                ]',                
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
+            ],
+            [
+                'id' => 4,
+                'title' => 'Did you test positive for COVID-19?',
+                'state_name' => 'isPositive',
+                'i18n' => 'isPositive',
+                'type' => 'select',
+                'options' => '[
+                    {"i18n": "yes", "label": "Yes", "value": true},
+                    {"i18n": "no", "label": "No", "value": false}
                 ]',
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),
