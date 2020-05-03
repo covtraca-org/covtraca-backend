@@ -2,7 +2,10 @@
 {{-- Header --}}
 @slot('header')
 @component('mail::header', ['url' => config('app.url')])
+<img src="https://api.covtraca.org/images/logo.png" width="50" data-auto-embed="base-64">
+<div>
 {{ config('app.name') }}
+</div>
 @endcomponent
 @endslot
 
