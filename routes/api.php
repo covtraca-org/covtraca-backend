@@ -34,3 +34,6 @@ Route::resource('devices', 'DeviceAPIController')->only([
 Route::resource('reports', 'ReportAPIController')->only([
     'index', 'show', 'store'
 ]);
+
+
+Route::post('join_team', 'NotificationController@sendEmail');

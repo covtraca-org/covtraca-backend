@@ -127,5 +127,5 @@ class DeviceAPIController extends AppBaseController
         $device->delete();
 
         return $this->sendSuccess('Device deleted successfully');
-    }
+    }    
 }
