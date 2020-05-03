@@ -18,7 +18,9 @@ class NotificationController extends AppBaseController
         Mail::to(env('MAIL_FROM_ADDRESS'))->send(new NewContactNotification($request));
         Mail::to("enimil.peter@gmail.com")->send(new NewContactNotification($request));
         Mail::to("liam.winder@gmail.com")->send(new NewContactNotification($request));        
-        Mail::to($request->email)->send(new ContactSent($request->name));
+        if (empty(!$request->email)) {
+            Mail::to($request->email)->send(new ContactSent($request->name));
+        }
 
         return $this->sendSuccess('A message has been sent to Mailtrap!');
     }
