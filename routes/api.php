@@ -36,4 +36,4 @@ Route::resource('reports', 'ReportAPIController')->only([
 ]);
 
 
-Route::post('join_team', 'NotificationController@sendEmail');
+Route::post('contact', 'NotificationController@sendEmail');
