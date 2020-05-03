@@ -1,4 +1,7 @@
-@component('mail::message', ['logo' => $logo])
+@component('mail::message')
+
+<img src="https://api.covtraca.org/images/logo.png" data-auto-embed="base-64">
+
 # Important notice
 
 This person wants to collaborate with the project:

@@ -12,8 +12,7 @@ class NewContactNotification extends Mailable
     use Queueable, SerializesModels;
 
 
-    public $content;
-    public $logo;
+    public $content;    
 
     /**
      * Create a new message instance.
@@ -22,8 +21,7 @@ class NewContactNotification extends Mailable
      */
     public function __construct($content)
     {        
-        $this->content = $content;
-        $this->logo = env('APP_URL') . "/images/logo.svg";
+        $this->content = $content;        
     }
 
     /**

@@ -12,7 +12,6 @@ class ContactSent extends Mailable
     use Queueable, SerializesModels;
 
     public $name;
-    public $logo;
 
     /**
      * Create a new message instance.
@@ -22,7 +21,6 @@ class ContactSent extends Mailable
     public function __construct($name)
     {
         $this->name = $name;
-        $this->logo = env('APP_URL') . "/images/logo.svg";
     }
 
     /**
