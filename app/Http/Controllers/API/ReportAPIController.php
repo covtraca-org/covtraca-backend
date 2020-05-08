@@ -9,7 +9,6 @@ use App\Repositories\ReportRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use Response;
-use Geocoder\Laravel\Facades\Geocoder;
 
 /**
  * Class ReportController
@@ -128,12 +127,5 @@ class ReportAPIController extends AppBaseController
         $report->delete();
 
         return $this->sendSuccess('Report deleted successfully');
-    }
-
-    public function countReports() {
-        $reports = $this->reportRepository->all();
-        $all = $reports->toArray();
-        $geo = app('geocoder')->reverse(43.882587,-103.454067)->get();
-        return $this->sendSuccess($geo->toArray(), "xd");
-    }
+    }    
 }
