@@ -177,6 +177,7 @@ return [
         App\Providers\ViewServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         \Eduardokum\LaravelMailAutoEmbed\ServiceProvider::class,
+        Geocoder\Laravel\Providers\GeocoderService::class,
 
     ],
 

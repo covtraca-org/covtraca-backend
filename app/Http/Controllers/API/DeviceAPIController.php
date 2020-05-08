@@ -127,5 +127,24 @@ class DeviceAPIController extends AppBaseController
         $device->delete();
 
         return $this->sendSuccess('Device deleted successfully');
-    }    
+    }
+
+    /**
+     * Display the specified UIDDevice.
+     * GET|HEAD /devices/{uid}
+     *
+     * @param int $uid
+     *
+     * @return Response
+     */
+    public function getUID($uid)
+    {
+        $device = Device::where('uid', '=', $uid)->first();        
+
+        if (empty($device)) {
+            return $this->sendError('Device UID not found');
+        }
+
+        return $this->sendResponse($device->toArray(), 'Device retrieved successfully');
+    }
 }

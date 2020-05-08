@@ -29,6 +29,8 @@ Route::resource('devices', 'DeviceAPIController')->only([
     'index', 'show', 'store'
 ]);
 
+Route::get('getUID/{uid}', 'DeviceAPIController@getUID');
+
 
 
 Route::resource('reports', 'ReportAPIController')->only([
@@ -37,3 +39,5 @@ Route::resource('reports', 'ReportAPIController')->only([
 
 
 Route::post('contact', 'NotificationController@sendEmail');
+
+Route::get('countReports', 'ReportAPIController@countReports');
