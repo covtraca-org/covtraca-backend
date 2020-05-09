@@ -9,6 +9,9 @@ use App\Repositories\ReportRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
+use Geocoder\Query\GeocodeQuery;
+use Geocoder\Query\ReverseQuery;
 
 /**
  * Class ReportController
@@ -127,5 +130,28 @@ class ReportAPIController extends AppBaseController
         $report->delete();
 
         return $this->sendSuccess('Report deleted successfully');
+    }
+
+    public function countReports()
+    {
+        $adapter  = new GuzzleAdapter();
+        $provider = new \Geocoder\Provider\OpenCage\OpenCage($adapter, '4c56063489df45f686a02b4b01c7c176');
+        $geocoder = new \Geocoder\StatefulGeocoder($provider, 'es');
+        $formatter = new \Geocoder\Formatter\StringFormatter();
+        $reports = $this->reportRepository->all();
+
+        $reportsCount = array();
+
+        foreach ($reports as $key => $report) {
+            $country = $geocoder->reverseQuery(ReverseQuery::fromCoordinates($report->lat, $report->long));
+            $code = $formatter->format($country->first(), '%c');
+            if (empty($reportsCount[$code])) {
+                $reportsCount[$code] = 1;
+            } else {
+                $reportsCount[$code] += 1;
+            }
+        }                
+        
+        return $this->sendSuccess($reportsCount, 'Report deleted successfully');
     }    
 }
