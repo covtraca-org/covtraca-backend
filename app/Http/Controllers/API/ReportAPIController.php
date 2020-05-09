@@ -154,6 +154,6 @@ class ReportAPIController extends AppBaseController
             }
         }                
         
-        return $this->sendSuccess($reportsCount, 'Report deleted successfully');
+        return $this->sendResponse($reportsCount, 'Report deleted successfully');
     }    
 }

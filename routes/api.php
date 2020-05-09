@@ -34,7 +34,7 @@ Route::get('getUID/{uid}', 'DeviceAPIController@getUID');
 
 
 Route::resource('reports', 'ReportAPIController')->only([
-    'index', 'show', 'store'
+    'store'
 ]);
 
 
