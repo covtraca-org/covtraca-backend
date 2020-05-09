@@ -143,12 +143,14 @@ class ReportAPIController extends AppBaseController
         $reportsCount = array();
 
         foreach ($reports as $key => $report) {
-            $country = $geocoder->reverseQuery(ReverseQuery::fromCoordinates($report->lat, $report->long));
-            $code = $formatter->format($country->first(), '%c');
-            if (empty($reportsCount[$code])) {
-                $reportsCount[$code] = 1;
-            } else {
-                $reportsCount[$code] += 1;
+            if (!empty($report->lat) && !empty($report->lat)) {
+                $country = $geocoder->reverseQuery(ReverseQuery::fromCoordinates($report->lat, $report->long));
+                $code = $formatter->format($country->first(), '%c');
+                if (empty($reportsCount[$code])) {
+                    $reportsCount[$code] = 1;
+                } else {
+                    $reportsCount[$code] += 1;
+                }
             }
         }                
         
