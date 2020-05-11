@@ -29,10 +29,9 @@ class ViewServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer(['reports.fields'], function ($view) {
-            $none = $deviceItems[] = array( null => "None" );
-            $pluck = Device::pluck('uid','id')->toArray();
-            $deviceItems = array_merge ( $pluck, $none);            
-            $view->with('deviceItems', $deviceItems);
+            $deviceItems = Device::pluck('uid','id');
+            $deviceItems->prepend("None", null);            
+            $view->with('deviceItems', $deviceItems->toArray());
         });
         View::composer(['reports.fields'], function ($view) {
             $questionItems = Question::pluck('title','id')->toArray();
