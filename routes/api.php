@@ -41,3 +41,5 @@ Route::resource('reports', 'ReportAPIController')->only([
 Route::post('contact', 'NotificationController@sendEmail');
 
 Route::get('countReports', 'ReportAPIController@countReports');
+
+Route::resource('count_reports', 'CountReportAPIController');

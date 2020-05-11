@@ -28,3 +28,8 @@ Route::resource('devices', 'DeviceController');
 
 
 Route::resource('reports', 'ReportController');
+
+
+Route::resource('countReports', 'CountReportController');
+
+Route::resource('countReports', 'CountReportController');

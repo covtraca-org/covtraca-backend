@@ -154,6 +154,10 @@ abstract class BaseRepository
         return $query->find($id, $columns);
     }
 
+    public function findBy($attribute, $value, $columns = array('*')) {
+        return $this->model->where($attribute, '=', $value)->first($columns);
+    }
+
     /**
      * Update model record for given id
      *

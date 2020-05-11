@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateReportRequest;
 use App\Http\Requests\UpdateReportRequest;
 use App\Repositories\ReportRepository;
+use App\Repositories\CountReportRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
@@ -14,11 +15,14 @@ class ReportController extends AppBaseController
 {
     /** @var  ReportRepository */
     private $reportRepository;
+    /** @var  CountReportRepository */
+    private $countReportRepository;
 
-    public function __construct(ReportRepository $reportRepo)
+    public function __construct(ReportRepository $reportRepo, CountReportRepository $countReportRepo)
     {
         $this->middleware('role:Administrator');
         $this->reportRepository = $reportRepo;
+        $this->countReportRepository = $countReportRepo;
     }
 
     /**
@@ -58,6 +62,28 @@ class ReportController extends AppBaseController
         $input = $request->all();
 
         $report = $this->reportRepository->create($input);
+
+        $reports = $this->reportRepository->all();
+                
+        if (!empty($report->lat) && !empty($report->lat)) {
+            $country = json_decode(app('geocoder')->reverse($report->lat, $report->long)->toJson());                
+
+            $reportFind = $this->countReportRepository->findBy("country_code", $country->properties->countryCode);                
+            
+            if (empty($reportFind)) {
+                $countInput = array(
+                    "country_code" => $country->properties->countryCode,
+                    "country_name" => $country->properties->country,
+                    "count" => 1
+                );
+                $this->countReportRepository->create($countInput);
+            } else {
+                $countInput = array(                        
+                    "count" => $reportFind->count += 1
+                );
+                $this->countReportRepository->update($countInput, $reportFind->id);
+            }
+        }
 
         Flash::success('Report saved successfully.');
 

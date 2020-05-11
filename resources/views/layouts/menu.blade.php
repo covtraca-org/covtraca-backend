@@ -12,3 +12,7 @@
     <a href="{{ route('reports.index') }}"><i class="fa fa-edit"></i><span>Reports</span></a>
 </li>
 
+<li class="{{ Request::is('countReports*') ? 'active' : '' }}">
+    <a href="{{ route('countReports.index') }}"><i class="fa fa-edit"></i><span>Count Reports</span></a>
+</li>
+

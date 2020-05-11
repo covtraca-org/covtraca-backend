@@ -5,13 +5,12 @@ namespace App\Http\Controllers\API;
 use App\Http\Requests\API\CreateReportAPIRequest;
 use App\Http\Requests\API\UpdateReportAPIRequest;
 use App\Models\Report;
+use App\Models\CountReport;
 use App\Repositories\ReportRepository;
+use App\Repositories\CountReportRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use Response;
-use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
-use Geocoder\Query\GeocodeQuery;
-use Geocoder\Query\ReverseQuery;
 
 /**
  * Class ReportController
@@ -22,10 +21,13 @@ class ReportAPIController extends AppBaseController
 {
     /** @var  ReportRepository */
     private $reportRepository;
+    /** @var  CountReportRepository */
+    private $countReportRepository;
 
-    public function __construct(ReportRepository $reportRepo)
+    public function __construct(ReportRepository $reportRepo, CountReportRepository $countReportRepo)
     {
         $this->reportRepository = $reportRepo;
+        $this->countReportRepository = $countReportRepo;
     }
 
     /**
@@ -59,6 +61,30 @@ class ReportAPIController extends AppBaseController
         $input = $request->all();
 
         $report = $this->reportRepository->create($input);
+
+        $reports = $this->reportRepository->all();
+        
+        foreach ($reports as $key => $rep) {
+            if (!empty($rep->lat) && !empty($rep->lat)) {
+                $country = json_decode(app('geocoder')->reverse($rep->lat, $rep->long)->toJson());                
+
+                $reportFind = $this->countReportRepository->findBy("country_code", $country->properties->countryCode);                
+                
+                if (empty($reportFind)) {
+                    $input = array(
+                        "country_code" => $country->properties->countryCode,
+                        "country_name" => $country->properties->country,
+                        "count" => 1
+                    );
+                    $this->countReportRepository->create($input);
+                } else {
+                    $input = array(                        
+                        "count" => $reportFind->count += 1
+                    );
+                    $this->countReportRepository->update($input, $reportFind->id);
+                }
+            }
+        }
 
         return $this->sendResponse($report->toArray(), 'Report saved successfully');
     }
@@ -130,30 +156,5 @@ class ReportAPIController extends AppBaseController
         $report->delete();
 
         return $this->sendSuccess('Report deleted successfully');
-    }
-
-    public function countReports()
-    {
-        $adapter  = new GuzzleAdapter();
-        $provider = new \Geocoder\Provider\OpenCage\OpenCage($adapter, '4c56063489df45f686a02b4b01c7c176');
-        $geocoder = new \Geocoder\StatefulGeocoder($provider, 'es');
-        $formatter = new \Geocoder\Formatter\StringFormatter();
-        $reports = $this->reportRepository->all();
-
-        $reportsCount = array();
-
-        foreach ($reports as $key => $report) {
-            if (!empty($report->lat) && !empty($report->lat)) {
-                $country = $geocoder->reverseQuery(ReverseQuery::fromCoordinates($report->lat, $report->long));
-                $code = $formatter->format($country->first(), '%c');
-                if (empty($reportsCount[$code])) {
-                    $reportsCount[$code] = 1;
-                } else {
-                    $reportsCount[$code] += 1;
-                }
-            }
-        }                
-        
-        return $this->sendResponse($reportsCount, 'Report deleted successfully');
-    }    
+    }     
 }
