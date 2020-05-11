@@ -64,25 +64,23 @@ class ReportAPIController extends AppBaseController
 
         $reports = $this->reportRepository->all();
         
-        foreach ($reports as $key => $rep) {
-            if (!empty($rep->lat) && !empty($rep->lat)) {
-                $country = json_decode(app('geocoder')->reverse($rep->lat, $rep->long)->toJson());                
+        if (!empty($report->lat) && !empty($report->lat)) {
+            $country = json_decode(app('geocoder')->reverse($report->lat, $report->long)->toJson());                
 
-                $reportFind = $this->countReportRepository->findBy("country_code", $country->properties->countryCode);                
-                
-                if (empty($reportFind)) {
-                    $input = array(
-                        "country_code" => $country->properties->countryCode,
-                        "country_name" => $country->properties->country,
-                        "count" => 1
-                    );
-                    $this->countReportRepository->create($input);
-                } else {
-                    $input = array(                        
-                        "count" => $reportFind->count += 1
-                    );
-                    $this->countReportRepository->update($input, $reportFind->id);
-                }
+            $reportFind = $this->countReportRepository->findBy("country_code", $country->properties->countryCode);                
+            
+            if (empty($reportFind)) {
+                $countInput = array(
+                    "country_code" => $country->properties->countryCode,
+                    "country_name" => $country->properties->country,
+                    "count" => 1
+                );
+                $this->countReportRepository->create($countInput);
+            } else {
+                $countInput = array(                        
+                    "count" => $reportFind->count += 1
+                );
+                $this->countReportRepository->update($countInput, $reportFind->id);
             }
         }
 
