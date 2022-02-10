@@ -23,7 +23,7 @@
         "vue-template-compiler": "2.6.11"
     },
     "dependencies": {
-        "node-sass": "^4.13.1",
+        "node-sass": "^7.0.0",
         "pug": "^2.0.4",
         "pug-loader": "^2.4.0",
         "vue": "^2.6.11",
